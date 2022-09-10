@@ -11,7 +11,7 @@ Product.init(
   {
     // define columns
     // What has been done here-by PJ
-    // Created titles for id/product_name/price/stock/category_id according to seeds folder on the product section as this is what will be filled in
+    // Created column/field for id/product_name/price/stock/category_id according to seeds folder on the product section as this is what will be filled in
    id: {
     type: DataTypes.INTEGER,
     allowNull:false,

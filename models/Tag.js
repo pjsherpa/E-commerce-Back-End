@@ -8,7 +8,7 @@ Tag.init(
   {
     // define columns
    //what has been done here by PJ
-   //created id and tag_name.
+   //created column/field id and tag_name.
 
     id: {
       type: DataTypes.INTEGER,

@@ -8,7 +8,7 @@ ProductTag.init(
   {
     // define columns
 // What has been done by PJ
-// Title created gor product_id & tag_id as this is what will be present in the title for product_id table
+// column/field created gor product_id & tag_id as this is what will be present in the title for product_id table
    id: {
      type: DataTypes.INTEGER,
      allowNull:false,
