@@ -10,6 +10,32 @@ class Product extends Model {}
 Product.init(
   {
     // define columns
+    // What has been done here-by PJ
+    // Created titles for id/product_name/price/stock/category_id according to seeds folder on the product section as this is what will be filled in
+   id: {
+    type: DataTypes.INTEGER,
+    allowNull:false,
+    primaryKey: true,
+    autoInrement: true
+   },
+  product_name: {
+    type: DataTypes.STRING,
+    allowNull: false
+  }
+  price: {
+    type: DataTypes.INTEGER,
+    allowNull:false,
+  }
+  stock: {
+    type: DataTypes.INTEGER,
+    allowNull:false,
+  }
+  category_id: {
+    type.DataTypes.INTEGER,
+    //check if this is unique
+    unique: true,
+    allowNull:false,
+  }
   },
   {
     sequelize,

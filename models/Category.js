@@ -7,6 +7,18 @@ class Category extends Model {}
 Category.init(
   {
     // define columns
+    // What has been done here by PJ
+    // Added title id and category_name according to the seed folder.
+    id: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      primaryKey: true,
+      autoIncrement: true
+    },
+  category_name:{
+    type: DataTypes.STRING,
+    allowNull: false,
+  }
   },
   {
     sequelize,
