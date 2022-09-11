@@ -25,7 +25,7 @@ try{
 });
 
 // get one product
-router.get('/:id', (req, res) => {
+router.get('/:id',async (req, res) => {
   // find a single product by its `id`
   // be sure to include its associated Category and Tag data
  try{
@@ -63,7 +63,7 @@ router.post('/', async(req, res) => {
     } catch (err) {
       res.status(400).json(err);
     }
-  });
+
     
   Product.create(req.body)
     .then((product) => {
@@ -85,7 +85,7 @@ router.post('/', async(req, res) => {
       console.log(err);
       res.status(400).json(err);
     });
-
+  });
 
 // update product
 router.put('/:id', (req, res) => {
