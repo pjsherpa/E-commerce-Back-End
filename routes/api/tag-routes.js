@@ -1,41 +1,41 @@
-const router = require('express').Router();
-const { Tag, Product, ProductTag } = require('../../models');
+const router = require("express").Router();
+const { Tag, Product, ProductTag } = require("../../models");
 
 // The `/api/tags` endpoint
-
-router.get('/',async (req, res) => {
+// this worked on insomnia--->done-PJ
+router.get("/", async (req, res) => {
   // find all tags
   // be sure to include its associated Product data
-  try{
-    const tagData=await Tag.findAll(req.params.id, {
-     
-      include: [{model: Product, through:ProductTag, as: 'tag_products' }],
+  try {
+    const tagData = await Tag.findAll(req.params.id, {
+      include: [{ model: Product, through: ProductTag, as: "tag_products" }],
     });
-    res.status(200).json(tagData);
-  }catch(err){
-    res.status(500).json(err);
-  }
-});
-
-router.get('/:id',async (req, res) => {
-  // find a single tag by its `id`
-  // be sure to include its associated Product data
-  try{
-    const tagData=await Tag.findByPK(req.params.id,{
-      include: [{model: Product, through:ProductTag, as: 'tag_products' }],
-    });
-    if (!tagData) {
-      res.status(404).json({ message: 'No Tag found with this id!' });
-      return;
-    }
-  
     res.status(200).json(tagData);
   } catch (err) {
     res.status(500).json(err);
   }
 });
 
-router.post('/',async (req, res) => {
+// this worked on insomnia--->done-PJ
+router.get("/:id", async (req, res) => {
+  // find a single tag by its `id`
+  // be sure to include its associated Product data
+  try {
+    const tagData = await Tag.findByPk(req.params.id, {
+      include: [{ model: Product, through: ProductTag, as: "tag_products" }],
+    });
+    if (!tagData) {
+      res.status(404).json({ message: "No Tag found with this id!" });
+      return;
+    }
+
+    res.status(200).json(tagData);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+router.post("/", async (req, res) => {
   // create a new tag
   try {
     const tagData = await Tag.create(req.body);
@@ -45,8 +45,7 @@ router.post('/',async (req, res) => {
   }
 });
 
-
-router.put('/:id', (req, res) => {
+router.put("/:id", (req, res) => {
   // update a tag's name by its `id` value
   Tag.update(req.body, {
     where: {
@@ -54,11 +53,9 @@ router.put('/:id', (req, res) => {
     },
   })
     .then((Tag) => {
-    
       return ProductTag.findAll({ where: { id: req.params.id } });
     })
     .then((productTags) => {
-  
       const tagIds = Product.map(({ tag_id }) => tag_id);
       // create filtered list of new ids
       const newTagIds = req.body.tag_name
@@ -71,7 +68,7 @@ router.put('/:id', (req, res) => {
         });
       // figure out which ones to remove
       const tag_nameToRemove = productTags
-        .filter(({tag_id }) => !req.body.tag_name.includes(tag_id))
+        .filter(({ tag_id }) => !req.body.tag_name.includes(tag_id))
         .map(({ id }) => id);
 
       // run both actions
@@ -87,17 +84,18 @@ router.put('/:id', (req, res) => {
     });
 });
 
-router.delete('/:id', async(req, res) => {
+// This worked on insomnia
+router.delete("/:id", async (req, res) => {
   // delete on tag by its `id` value
   try {
     const tagData = await Tag.destroy({
       where: {
-        id: req.params.id
-      }
+        id: req.params.id,
+      },
     });
 
     if (!tagData) {
-      res.status(404).json({ message: 'No Tag found with this id!' });
+      res.status(404).json({ message: "No Tag found with this id!" });
       return;
     }
 
