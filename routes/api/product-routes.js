@@ -15,11 +15,8 @@ router.get("/", async (req, res) => {
 
   //created try catch to catch all the errors.
   try {
-    const productData = await Product.findAll(req.params.id, {
-      include: [
-        { model: Category, through: ProductTag, as: "category_id" },
-        { model: Tag, through: ProductTag, as: "tag_products" },
-      ],
+    const productData = await Product.findAll({
+      include: [{ model: Category }, { model: Tag }],
     });
     res.status(200).json(productData);
   } catch (err) {
@@ -84,6 +81,7 @@ router.post("/", (req, res) => {
 // update product
 router.put("/:id", (req, res) => {
   // update product data
+
   Product.update(req.body, {
     where: {
       id: req.params.id,
@@ -118,7 +116,7 @@ router.put("/:id", (req, res) => {
     })
     .then((updatedProductTags) => res.json(updatedProductTags))
     .catch((err) => {
-      // console.log(err);
+      console.log(err);
       res.status(400).json(err);
     });
 });
