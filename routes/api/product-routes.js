@@ -29,7 +29,7 @@ router.get("/", async (req, res) => {
 
 // get one product
 
-// This did not work in insomnia WIP--->PJ
+// fixed
 router.get("/:id", async (req, res) => {
   // find a single product by its `id`
   // be sure to include its associated Category and Tag data

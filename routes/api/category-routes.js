@@ -51,38 +51,18 @@ router.put("/:id", (req, res) => {
       id: req.params.id,
     },
   })
-    .then((category) => {
-      return ProductTag.findAll({ where: { id: req.params.id } });
+    .then((categoryData) => {
+      if (!categoryData) {
+        res.status(404).json({ message: "No Category found with this ID." });
+        return;
+      }
+      res.json(categoryData);
     })
-    .then((productTags) => {
-      const categoryIds = Product.map(({ cat_id }) => cat_id);
-      // create filtered list of new ids
-      const newcategoryIds = req.body.category_name
-        .filter((cat_id) => !categoryIds.includes(cat_id))
-        .map((cat_id) => {
-          return {
-            id: req.params.id,
-            cat_id,
-          };
-        });
-      // figure out which ones to remove
-      const category_nameToRemove = productTags
-        .filter(({ cat_id }) => !req.body.category_name.includes(cat_id))
-        .map(({ id }) => id);
-
-      // run both actions
-      return Promise.all([
-        category_name.destroy({ where: { id: category_nameToRemove } }),
-        Produccategory_name.bulkCreate(newCategory_name),
-      ]);
-    })
-    .then((updatedCategory_name) => res.json(updatedCategory_name))
     .catch((err) => {
-      // console.log(err);
-      res.status(400).json(err);
+      console.log(err);
+      res.status(500).json(err);
     });
 });
-
 // this works in insomnia--->PJ
 router.delete("/:id", async (req, res) => {
   // delete a category by its `id` value
