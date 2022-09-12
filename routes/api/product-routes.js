@@ -48,7 +48,7 @@ router.get("/:id", async (req, res) => {
   }
 });
 
-router.post("/", async (req, res) => {
+router.post("/", (req, res) => {
   /* req.body should look like this...(is this in insomnia?-->PJ check)
   
     {
