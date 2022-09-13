@@ -32,4 +32,5 @@ https://github.com/pjsherpa/E-commerce-Back-End
 ###Video Walkthrough
 
 [Pj's Walkthrough Video Part 1](https://drive.google.com/file/d/11Yf0Iur8122qxd-CWldmG1zLQsQZhtLt/view)
+
 [Pj's Walkthrough Video Part 2](https://drive.google.com/file/d/1pJInLckLymwU7-umHjr_ZC1Vu-sRmpWw/view)
