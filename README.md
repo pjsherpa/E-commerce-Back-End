@@ -1,6 +1,6 @@
 # E-commerce Back End application 
-  [![License](https://img.shields.io/badge/license--blue.svg)
-      ](https://opensource.org/licenses/)
+   [![License](https://img.shields.io/badge/license-mit-blue.svg)
+      ](https://opensource.org/licenses/mit)
   
   Table of Content:
   1. [Project Description](#Project-Description)
