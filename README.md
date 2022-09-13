@@ -15,10 +15,10 @@ The e-commerce-back-end was built to demonstarte GET,POST,PUT & DELETE routes to
 How it works?
 
 1. Create database using mysql.
-2. Created table and insert value accordinly.
+2. Created table and insert value accordingly.
 3. Working with PUT,DELETE,POST & GET.
 4. Once the above command has been put through in the current working app which is insomnia it will retreive/respond data accordingly.
-5. One thing we will notice when we request GET we will notice a linkage between all three tables that had been created using step 2.
+5. We will notice when we request GET we will notice a linkage between all three tables that had been created using step 2.
 
 
 ### Installation:
